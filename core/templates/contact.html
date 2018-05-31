@@ -1,0 +1,62 @@
+{% extends 'base_news.html' %}
+{% load staticfiles %}
+{% block body %}
+    <div class="row">
+        <div class="span8 contact">
+            <h2>Contate-nos</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla iaculis mattis lorem, quis gravida nunc
+                iaculis ac. Proin tristique tellus in est vulputate luctus fermentum ipsum molestie. Vivamus tincidunt
+                sem eu magna varius elementum. Maecenas felis tellus, fermentum vitae laoreet vitae, volutpat et
+                urna.</p>
+
+{#            <div class="alert alert-success">#}
+{#                Well done! You successfully read this important alert message.#}
+{#            </div>#}
+
+            {% csrf_token %}
+            <form action="{% url 'send_mail' %}" id="contact-form" method="post">
+                {% csrf_token %}
+                <div class="input-prepend">
+                    <span class="add-on"><i class="icon-user"></i></span>
+                    <input class="span4" id="prependedInput" name="name" size="16" type="text" placeholder="Seu Nome">
+                </div>
+                {% csrf_token %}
+                <div class="input-prepend">
+                    <span class="add-on"><i class="icon-envelope"></i></span>
+                    <input class="span4" id="prependedInput" name="email" size="16" type="text" placeholder="Endereço de Email">
+                </div>
+                {% csrf_token %}
+                <textarea class="span6" name="content"></textarea>
+                {% csrf_token %}
+                <div class="row">
+                    <div class="span2">
+                        {% csrf_token %}
+                        <input type="submit" class="btn btn-inverse" value="Enviar Mensagem">
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <!-- Sidebar
+        ================================================== -->
+        <div class="span4 sidebar page-sidebar"><!-- Begin sidebar column -->
+            <h5 class="title-bg">Nossa Localização</h5>
+            <address>
+                <strong>LGR Advocacia</strong><br>
+                Rua Valério Pereira, Galeria Portinari<br>
+                Centro, Petrolina 53604-040<br>
+                (87) 98855-4293
+            </address>
+
+            <address>
+{#                <strong>Jimmy Doe</strong><br>#}
+                <a href="mailto:#">escritoriolgr@gmail.com</a>
+            </address>
+
+            <h5 class="title-bg">Mapa</h5>
+            <img src="{% static 'img/location-map.jpg' %}" alt="map">
+
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,73 @@
+{% extends 'base_news.html' %}
+{% load staticfiles %}
+{% block body %}
+    <h5 class="title-bg">Todas as publicações</h5>
+    <div class="row">
+        <div class="span9 blog">
+            <div class="row clearfix">
+                <ul class="blog-post-grid">
+
+                    {% for i in news %}
+                        <a href="{% url 'news_detail' i.id %}">
+                            <li class="span3 blog-post-item">
+                                <div class="blog-post-hover hidden-phone hidden-tablet">
+                                    <p><a href="{% url 'news_detail' i.id %}" class="clearfix">{{ i.title }}</a>
+                                        {{ i.date }}<br/>
+                                </div>
+                                <a href="news_detail.html"><img class="img_post_all" src="/media/{{ i.image }}"
+                                                                alt="Post Thumb"></a>
+                            </li>
+                        </a>
+                    {% endfor %}
+
+                </ul>
+            </div>
+
+            <!-- Pagination -->
+            <div class="pagination">
+                <ul>
+                    {% if news.has_previous %}
+                        <li><a href="?page=1">&laquo; Inicio</a></li>
+                        <li><a href="?page={{ news.previous_page_number }}">Anterior</a></li>
+                    {% endif %}
+
+                    <li><a href="">Pagina {{ news.number }} de {{ news.paginator.num_pages }}.</a></li>
+
+                    {% if news.has_next %}
+                        <li><a href="?page={{ news.next_page_number }}">Proximo</a></li>
+                        <li><a href="?page={{ news.paginator.num_pages }}">Ultima &raquo;</a></li>
+                    {% endif %}
+                    {#                </ul>#}
+                </ul>
+            </div>
+        </div>
+
+        <!-- Blog Sidebar
+        ================================================== -->
+        <div class="span3 sidebar">
+
+            <section>
+                <div class="input-append">
+                    <form action="#">
+                        <input id="appendedInputButton" size="16" type="text" placeholder="Search">
+                        <button class="btn" type="button"><i class="icon-search"></i></button>
+                    </form>
+                </div>
+            </section>
+
+            <h5 class="title-bg">Temas</h5>
+
+            <ul class="post-category-list">
+                {% for i in themes %}
+                    <li><a href="#">{{ i.name }}</a></li>
+                {% endfor %}
+            </ul>
+
+
+        </div>
+
+    </div>
+
+    </div> <!-- End Container -->
+
+{% endblock %}

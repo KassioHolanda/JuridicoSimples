@@ -1,0 +1,22 @@
+.img_news {
+    width: 270px;
+    height: 160px;
+}
+
+.img_news_detail {
+    height: 455px;
+    width: 770px;
+}
+
+.blog-post-hover {
+    height: 190px;
+}
+
+.img_post_all {
+    width: 280px;
+    height: 190px;
+}
+
+.blog-post-hover a {
+    font-size: 16px;
+}

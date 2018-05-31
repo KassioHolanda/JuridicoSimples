@@ -1,0 +1,59 @@
+{% extends 'base_news.html' %}
+{% load staticfiles %}
+{% block body %}
+    <div class="row headline"><!-- Begin Headline -->
+        <div class="span8">
+            <div class="flexslider">
+                <ul class="slides">
+                    <li><a href="{% url 'contact' %}"><img src="{% static 'img/office.jpg' %}" alt="slider"/></a>
+                    </li>
+                    <li><a href="{% url 'contact' %}"><img src="{% static 'img/office.jpg' %}" alt="slider"/></a>
+                    </li>
+                    <li><a href="{% url 'contact' %}"><img src="{% static 'img/office.jpg' %}" alt="slider"/></a>
+                    </li>
+                    <li><a href="{% url 'contact' %}"><img src="{% static 'img/office.jpg' %}" alt="slider"/></a>
+                    </li>
+                    <li><a href="{% url 'contact' %}"><img src="{% static 'img/office.jpg' %}" alt="slider"/></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="span4">
+            <h3>Bem vindo ao advogando. <br/>
+                Um grande centro de Informações.</h3>
+            <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam pretium vulputate magna sit
+                amet blandit.</p>
+            <p>Cras rutrum, massa non blandit convallis, est lacus gravida enim, eu fermentum ligula orci et tortor. In
+                sit amet nisl ac leo pulvinar molestie. Morbi blandit ultricies ultrices.</p>
+        </div>
+    </div><!-- End Headline -->
+
+    <div class="row gallery-row"><!-- Begin Gallery Row -->
+
+        <div class="span12">
+            <h5 class="title-bg">Postagens Recentes
+                <small>Caso você não as tenha visto</small>
+            </h5>
+
+            <div class="row clearfix no-margin">
+                <ul class="gallery-post-grid holder">
+
+                    {% for new in news_all %}
+                        <li class="span3 gallery-item" data-id="id-1" data-type="illustration">
+                        <span class="gallery-hover-4col hidden-phone hidden-tablet">
+                            <span class="gallery-icons">
+                                <a href="{% url 'news_detail' new.id %}" class="item-details-link"></a>
+                            </span>
+                        </span>
+                            <a href="gallery-single.htm"><img class="img_news" src="/media/{{ new.image }}" alt="Gallery"></a>
+                            <span class="project-details"><a
+                                    href="gallery-single.htm">{{ new.title }}</a>{{ new.resume }}.</span>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
