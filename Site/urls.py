@@ -34,5 +34,5 @@ urlpatterns = [
                   path('all_news/', all_news, name='all_news'),
                   path('logout/', logout_then_login, {"login_url": "login"}, name="logout_usuario"),
                   path('send_mail', send_mail, name='send_mail'),
-                  path('all_news/', search_by_theme, name='search_by_theme'),
+                  # path('all_news/', search_by_theme, name='search_by_theme'),
               ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

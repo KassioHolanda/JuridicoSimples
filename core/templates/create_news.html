@@ -4,8 +4,7 @@
     <div class="row">
         <form method="POST" name="register" class="register-form" enctype="multipart/form-data">
             {% csrf_token %}
-            {{ form_create_news }}
-            <Br>
+            {{ form_create_news }}<br>
             <button type="submit" id='submit'
                     class="btn-large waves-effect waves-light green-black">Publicar
             </button>

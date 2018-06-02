@@ -21,8 +21,8 @@ class News(models.Model):
     title = models.CharField('Titulo', max_length=40, null=False)
     resume = models.CharField('Resumo', max_length=40, null=True)
     theme = models.ForeignKey('Theme', related_name='news_theme', max_length=255, null=True, on_delete=models.CASCADE)
-    body = models.CharField('Corpo da Noticia', max_length=255, null=False)
-    image = models.FileField(upload_to=get_file_path)
+    body = models.TextField('Corpo da Noticia', null=False)
+    image = models.FileField(upload_to=get_file_path, null=True)
     # user_register = models.ForeignKey('User', null=False, on_delete=models.CASCADE)
 
     def __str__(self):

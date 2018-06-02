@@ -3,20 +3,20 @@
 {% block body %}
     <div class="row headline"><!-- Begin Headline -->
         <div class="span8">
-            <div class="flexslider">
-                <ul class="slides">
+{#            <div class="flexslider">#}
+{#                <ul class="slides">#}
                     <li><a href="{% url 'contact' %}"><img src="{% static 'img/office.jpg' %}" alt="slider"/></a>
                     </li>
-                    <li><a href="{% url 'contact' %}"><img src="{% static 'img/office.jpg' %}" alt="slider"/></a>
-                    </li>
-                    <li><a href="{% url 'contact' %}"><img src="{% static 'img/office.jpg' %}" alt="slider"/></a>
-                    </li>
-                    <li><a href="{% url 'contact' %}"><img src="{% static 'img/office.jpg' %}" alt="slider"/></a>
-                    </li>
-                    <li><a href="{% url 'contact' %}"><img src="{% static 'img/office.jpg' %}" alt="slider"/></a>
-                    </li>
-                </ul>
-            </div>
+{#                    <li><a href="{% url 'contact' %}"><img src="{% static 'img/office.jpg' %}" alt="slider"/></a>#}
+{#                    </li>#}
+{#                    <li><a href="{% url 'contact' %}"><img src="{% static 'img/office.jpg' %}" alt="slider"/></a>#}
+{#                    </li>#}
+{#                    <li><a href="{% url 'contact' %}"><img src="{% static 'img/office.jpg' %}" alt="slider"/></a>#}
+{#                    </li>#}
+{#                    <li><a href="{% url 'contact' %}"><img src="{% static 'img/office.jpg' %}" alt="slider"/></a>#}
+{#                    </li>#}
+{#                </ul>#}
+{#            </div>#}
         </div>
 
         <div class="span4">
@@ -32,7 +32,7 @@
     <div class="row gallery-row"><!-- Begin Gallery Row -->
 
         <div class="span12">
-            {% if news_all %}]
+            {% if news_all %}
                 <h5 class="title-bg">Postagens Recentes
                     <small>Caso você não as tenha visto</small>
                 </h5>
