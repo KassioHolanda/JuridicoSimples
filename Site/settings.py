@@ -121,7 +121,7 @@ STATIC_URL = '/static/'
 LOGIN_URL = 'admin_home/'
 LOGIN_REDIRECT_URL = '/admin_home/'
 LOGOUT_URL = '/logout/'
-REGISTER_USER = 'login_admin/'
+REGISTER_USER = '/login_admin/'
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static')

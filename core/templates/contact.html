@@ -4,14 +4,13 @@
     <div class="row">
         <div class="span8 contact">
             <h2>Contate-nos</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla iaculis mattis lorem, quis gravida nunc
-                iaculis ac. Proin tristique tellus in est vulputate luctus fermentum ipsum molestie. Vivamus tincidunt
-                sem eu magna varius elementum. Maecenas felis tellus, fermentum vitae laoreet vitae, volutpat et
-                urna.</p>
+            <p>O escritório LGR Advocacia presta assessoria na solução de conflitos judiciais e extrajudiciais. Composto
+                de profissionais qualificados nas diversas áreas do direito o Escritório tem como filosofia a rapidez, a
+                eficiência e a exclusividade na prestação de serviços aos seus clientes e parceiros.</p>
 
-{#            <div class="alert alert-success">#}
-{#                Well done! You successfully read this important alert message.#}
-{#            </div>#}
+            {#            <div class="alert alert-success">#}
+            {#                Well done! You successfully read this important alert message.#}
+            {#            </div>#}
 
             {% csrf_token %}
             <form action="{% url 'send_mail' %}" id="contact-form" method="post">
@@ -23,7 +22,8 @@
                 {% csrf_token %}
                 <div class="input-prepend">
                     <span class="add-on"><i class="icon-envelope"></i></span>
-                    <input class="span4" id="prependedInput" name="email" size="16" type="text" placeholder="Endereço de Email">
+                    <input class="span4" id="prependedInput" name="email" size="16" type="text"
+                           placeholder="Endereço de Email">
                 </div>
                 {% csrf_token %}
                 <textarea class="span6" name="content"></textarea>
@@ -49,7 +49,7 @@
             </address>
 
             <address>
-{#                <strong>Jimmy Doe</strong><br>#}
+                {#                <strong>Jimmy Doe</strong><br>#}
                 <a href="mailto:#">escritoriolgr@gmail.com</a>
             </address>
 

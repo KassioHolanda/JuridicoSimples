@@ -1,29 +1,28 @@
 {% extends 'base_news.html' %}
 {% block body %}
-    {#    <h5 class="title-bg">User Login</h5>#}
-    {#    <div class="row">#}
-    {#        <form method="POST" name="register" class="register-form">#}
-    {#            {% csrf_token %}#}
-    {#            {{ form }}#}
-    {#            <br>#}
-    {#            <button class="btn btn-small btn-inverse" type="submit" id='submit'#}
-    {#            >Login#}
-    {#            </button>#}
-    {#            <br><br>#}
-    {#        </form>#}
-    {#    </div>#}
     <br><br>
-    <h5 class="title-bg">User Login</h5>
+    <h5 class="title-bg">Acessar</h5>
+
+
     <form action="/login_admin/" method="post">
         {% csrf_token %}
         <div class="input-prepend">
-            <span class="add-on"><i class="icon-user"></i></span><input class="span2" id="prependedInput" size="16"  type="text" name="user" placeholder="Nome de Usuario"></div>
+            <span class="add-on"><i class="icon-user"></i></span><input class="span2" id="prependedInput"
+                                                                        size="16" type="text" name="user"
+                                                                        placeholder="Nome de Usuario"></div>
         {% csrf_token %}
         <div class="input-prepend">
-            <span class="add-on"><i class="icon-lock"></i></span><input class="span2" id="appendedPrependedInput"  size="16"  type="text" name="password" placeholder="Informe sua Senha"></div>
-        {% csrf_token %}
+            <span class="add-on"><i class="icon-lock"></i></span><input class="span2"
+                                                                        id="appendedPrependedInput" size="16"
+                                                                        type="text" name="password"
+                                                                        placeholder="Informe sua Senha"></div>
+{#        {% csrf_token %}#}
+        <br>
         <button class="btn btn-small btn-inverse" type="submit">Login</button>
     </form>
     <br><br>
+
+
+
 {% endblock %}
 

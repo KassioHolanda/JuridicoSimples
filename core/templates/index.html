@@ -32,9 +32,11 @@
     <div class="row gallery-row"><!-- Begin Gallery Row -->
 
         <div class="span12">
-            <h5 class="title-bg">Postagens Recentes
-                <small>Caso você não as tenha visto</small>
-            </h5>
+            {% if news_all %}]
+                <h5 class="title-bg">Postagens Recentes
+                    <small>Caso você não as tenha visto</small>
+                </h5>
+            {% endif %}
 
             <div class="row clearfix no-margin">
                 <ul class="gallery-post-grid holder">
@@ -46,7 +48,8 @@
                                 <a href="{% url 'news_detail' new.id %}" class="item-details-link"></a>
                             </span>
                         </span>
-                            <a href="gallery-single.htm"><img class="img_news" src="/media/{{ new.image }}" alt="Gallery"></a>
+                            <a href="gallery-single.htm"><img class="img_news" src="/media/{{ new.image }}"
+                                                              alt="Gallery"></a>
                             <span class="project-details"><a
                                     href="gallery-single.htm">{{ new.title }}</a>{{ new.resume }}.</span>
                         </li>

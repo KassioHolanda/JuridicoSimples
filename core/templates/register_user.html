@@ -1,0 +1,14 @@
+{% extends 'base_news.html' %}
+{% block body %}
+    <br>
+    <br>
+    <h5 class="title-bg">Registrar Usuario</h5>
+    <form method="POST" name="register" class="register-form">
+        {% csrf_token %}
+        {{ form_register_user }}
+        <br>
+        <button class="btn btn-small btn-inverse" type="submit">Registrar</button>
+    </form>
+    <br>
+    <br>
+{% endblock %}

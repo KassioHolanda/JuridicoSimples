@@ -20,7 +20,17 @@ User = get_user_model()
 # Create your views here.
 def index(request):
     template_name = 'index.html'
-    context = {'news': News.objects.get(id=1), 'news_2': News.objects.get(id=2), 'news_all': News.objects.all()[2:10]}
+    context = {}
+
+    try:
+        context += {
+            # 'news': News.objects.get(id=1),
+            # 'news_2': News.objects.get(id=2),
+            'news_all': News.objects.all()
+        }
+    except:
+        context = {}
+
     return render(request, template_name, context)
 
 
@@ -37,6 +47,14 @@ def register_user(request):
     else:
         form_register_user = RegisterUser()
         context = {'form_register_user': form_register_user}
+    return render(request, template_name, context)
+
+
+def search_by_theme(request, theme_id):
+    template_name = 'all_news.html'
+    context = {
+        'news_by_theme': News.objects.filter(theme_id=theme_id)
+    }
     return render(request, template_name, context)
 
 
@@ -58,7 +76,9 @@ def login(request):
 
 def news_detail(request, id_news):
     template_name = 'news_detail.html'
+
     context = {'new_detail': News.objects.get(id=id_news), 'news': News.objects.all()[2:7]}
+
     return render(request, template_name, context)
 
 
@@ -99,8 +119,10 @@ def all_news(request):
     page = request.GET.get('page')
 
     news = paginator.get_page(page)
-
-    context = {'themes': Theme.objects.all(), 'news': news}
+    try:
+        context = {'themes': Theme.objects.all(), 'news': news}
+    except:
+        context = {}
     return render(request, template_name, context)
 
 

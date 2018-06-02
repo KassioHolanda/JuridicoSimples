@@ -46,20 +46,20 @@
         ================================================== -->
         <div class="span3 sidebar">
 
-            <section>
-                <div class="input-append">
-                    <form action="#">
-                        <input id="appendedInputButton" size="16" type="text" placeholder="Search">
-                        <button class="btn" type="button"><i class="icon-search"></i></button>
-                    </form>
-                </div>
-            </section>
+{#            <section>#}
+{#                <div class="input-append">#}
+{#                    <form action="#">#}
+{#                        <input id="appendedInputButton" size="16" type="text" placeholder="Search">#}
+{#                        <button class="btn" type="button"><i class="icon-search"></i></button>#}
+{#                    </form>#}
+{#                </div>#}
+{#            </section>#}
 
             <h5 class="title-bg">Temas</h5>
 
             <ul class="post-category-list">
                 {% for i in themes %}
-                    <li><a href="#">{{ i.name }}</a></li>
+                    <li><a href="{% url 'search_by_theme' i.theme.id %}">{{ i.name }}</a></li>
                 {% endfor %}
             </ul>
 
