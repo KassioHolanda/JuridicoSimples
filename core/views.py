@@ -10,7 +10,7 @@ from django.shortcuts import render, redirect
 from django.conf import settings
 
 # from core.forms import RegistrarUsuarioForm
-from core.forms import RegisterUser, RegiterNewsForm
+from core.forms import RegisterUser, RegiterNewsForm, RegistrarTemaFormulario
 from django.contrib.auth import login as auth_login
 from core.models import News, Theme
 
@@ -22,11 +22,11 @@ def index(request):
     template_name = 'index.html'
     # context = {}
 
-
     context = {
         # 'news': News.objects.get(id=1),
         # 'news_2': News.objects.get(id=2),
-        'news_all': News.objects.all()[:4]
+        'news_all': News.objects.all()[:4],
+        'postagem_principal' : News.objects.all().filter(postagem_principal=True).first()
     }
 
     return render(request, template_name, context)
@@ -46,6 +46,7 @@ def register_user(request):
         form_register_user = RegisterUser()
         context = {'form_register_user': form_register_user}
     return render(request, template_name, context)
+
 
 #
 # def search_by_theme(request, theme_id):
@@ -83,29 +84,89 @@ def news_detail(request, id_news):
 @login_required
 def admin_home(request):
     template_name = 'admin_home.html'
-    return render(request, template_name)
+    context = {
+
+        'news': News.objects.all()[:12]
+    }
+    return render(request, template_name, context)
+
+
+# @login_required
+# def configurar_postagem(request, postagem_id):
+#     postagem = News.objects.get(id=postagem_id)
+#     template_name = 'configurar_postagem.html'
+#
+#     context = {
+#         'postagem': postagem
+#     }
+#     return render(request, template_name, context)
 
 
 @login_required
 def create_news(request):
     template_name = 'create_news.html'
     if request.method == 'POST':
-        form_create_news = RegiterNewsForm(request.POST, request.FILES)
+        formulario_cadastrar_tema = RegistrarTemaFormulario(request.POST)
+        if formulario_cadastrar_tema.is_valid():
+            tema = formulario_cadastrar_tema.save(commit=False)
+            tema.save()
+            formulario_cadastrar_tema = RegistrarTemaFormulario()
 
+        form_create_news = RegiterNewsForm(request.POST, request.FILES)
         if form_create_news.is_valid():
             news = form_create_news.save(commit=False)
             news.save()
             form_create_news = RegiterNewsForm()
     else:
-        form_create_news = RegiterNewsForm(request.POST)
+        formulario_cadastrar_tema = RegistrarTemaFormulario(request.POST)
+        form_create_news = RegiterNewsForm(request.POST, request.FILES)
 
-    context = {'form_create_news': form_create_news}
+    context = {'form_create_news': form_create_news, 'formulario_cadastrar_tema': formulario_cadastrar_tema}
     return render(request, template_name, context)
+
+
+# def cadastrar_tema_postagem(request):
+# tema = request.POST.get('tema', None)
+# descricao = request.POST.get('descricao', None)
+# context = {}
+
+# if request.method == 'POST':
+#     if Theme.objects.filter(name=tema).exists():
+#         return HttpResponse('O tema ja esta cadastrado')
+#
+#     if tema and descricao:
+# #         Theme.objects.create(description=descricao, name=tema).save()
+# #     else:
+# #         context['erros'] = 'Preencha os dados corretamente'
+#
+#
+# else:
+#     formulario_cadastrar_tema = RegistrarTemaFormulario(request.POST)
+# # context = {'formulario_tema' : formulario_cadastrar_tema}
+# return redirect('/create_news/')
 
 
 def contact(request):
     template_name = 'contact.html'
     return render(request, template_name)
+
+
+@login_required
+def admin_home(request):
+    template_name = 'admin_home.html'
+
+    news_list = News.objects.all()
+
+    paginator = Paginator(news_list, 12)
+    page = request.GET.get('page')
+
+    news = paginator.get_page(page)
+
+    context = {
+
+        'news': news
+    }
+    return render(request, template_name, context)
 
 
 def all_news(request):

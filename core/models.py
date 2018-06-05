@@ -23,18 +23,19 @@ class News(models.Model):
     theme = models.ForeignKey('Theme', related_name='news_theme', max_length=255, null=True, on_delete=models.CASCADE)
     body = models.TextField('Corpo da Noticia', null=False)
     image = models.FileField(upload_to=get_file_path, null=True)
+    postagem_principal = models.BooleanField('Postagem Principal', default=False, null=False)
     # user_register = models.ForeignKey('User', null=False, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.title
 
     class Meta:
-        ordering = ('pk',)
+        ordering = ('-date',)
 
 
 class Theme(models.Model):
     description = models.CharField(max_length=255, null=False)
-    name = models.CharField(max_length=255, null=False)
+    name = models.CharField(max_length=255, null=False, unique=True)
 
     def __str__(self):
         return self.name

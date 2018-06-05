@@ -2,7 +2,7 @@ from django import forms
 from django.contrib.auth import get_user_model
 from django.forms.widgets import ClearableFileInput
 
-from core.models import User, News
+from core.models import User, News, Theme
 
 User = get_user_model()
 
@@ -60,3 +60,9 @@ class RegiterNewsForm(forms.ModelForm):
             },
             # 'resume'
         }
+
+
+class RegistrarTemaFormulario(forms.ModelForm):
+    class Meta:
+        model = Theme
+        fields = '__all__'

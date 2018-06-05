@@ -6,13 +6,18 @@
         <div class="span8 blog">
             <article>
                 <h3 class="title-bg"><a href="#">{{ new_detail.title }}</a></h3>
-                <div class="post-content">
-                    <a href="#"><img class="img_news_detail" src="/media/{{ new_detail.image }}" alt="Post Thumb"></a>
 
+                <div class="post-content">
+                    <a href="#">
+                        <img class="img_news_detail" src="/media/{{ new_detail.image }}" alt="Post Thumb"></a>
                     <div class="post-body">
                         <p>{{ new_detail.body }}.</p>
                     </div>
-
+                    {#                    <span class="gallery-icons">#}
+                    {#                                <a href="/media/{{ new_detail.image }}"#}
+                    {#                                   class="item-zoom-link lightbox" title="Imagem Ampliada"#}
+                    {#                                   data-rel="prettyPhoto"></a>#}
+                    {#                            </span>#}
                     <div class="post-summary-footer">
                         <ul class="post-data">
                             <li><i class="icon-calendar"></i>{{ new_detail.date.date }}</li>
@@ -24,22 +29,26 @@
         </div>
 
 
-        <!-- Blog Sidebar
-        ================================================== -->
-        <div class="span4 sidebar">
-
-
-            <h5 class="title-bg">Outras Postagens</h5>
-            <ul class="popular-posts">
-                {% for i in news %}
-                <li>
-                    <a href="#"><img src="/media/{{ i.image }}" style="width: 30%" alt="Popular Post"></a>
-                    <h6><a href="#">{{ i.title }}</a></h6>
-                    <em>{{ i.date }}</em>
-                </li>
-                {% endfor %}
-            </ul>
+        <div class="modal">
+            <div class="span4 sidebar">
+                <h5 class="title-bg">Outras Postagens</h5>
+                <ul class="popular-posts">
+                    {% for i in news %}
+                        <a href="{% url 'news_detail' i.id %}">
+                            <li>
+                                <a href="{% url 'news_detail' i.id %}"><img class="img_outras_postagens"
+                                                                            src="/media/{{ i.image }}"
+                                                                            style="width: 30%"
+                                                                            alt="Popular Post"></a>
+                                <h6><a href="{% url 'news_detail' i.id %}">{{ i.title }}</a></h6>
+                                <em>{{ i.date }}</em>
+                            </li>
+                        </a>
+                    {% endfor %}
+                </ul>
+            </div>
         </div>
+
     </div>
 
 {% endblock %}

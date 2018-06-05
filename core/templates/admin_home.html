@@ -1,7 +1,81 @@
 {% extends 'base_admin.html' %}
+{% load  staticfiles %}
 {% block body %}
-    <br><br><br><br><br><br><br><br><br><br><br><br>
-{#    <div class="span5 logo">#}
-{#        <h5 style="font-size: 16px; text-align: center">Bem Vindo {{ user }}</h5>#}
-{#    </div>#}
+
+    <div class="row">
+
+        <div class="span12 gallery">
+
+            <div class="row clearfix">
+                <ul class="gallery-post-grid holder">
+
+                    {% for i in news %}
+                        <li class="span2 gallery-item" data-id="id-1" data-type="illustration">
+                        <span class="gallery-hover-6col hidden-phone hidden-tablet">
+                            <span class="gallery-icons">
+                                <a href="/media/{{ i.image }}"
+                                   class="item-zoom-link lightbox" title="Imagem Ampliada"
+                                   data-rel="prettyPhoto"></a>
+                                <a href="#" class="item-details-link"></a>
+                            </span>
+                        </span>
+                            <a href="#"><img class="img_index_home" src="/media/{{ i.image }}"
+                                             alt="Gallery"></a>
+                            <span class="project-details"><a href="#" data-toggle="modal"
+                                                             data-target="#myModal">{{ i.title }}</a>{{ i.resume }}.</span>
+                        </li>
+
+                        <div id="myModal" class="modal fade" role="dialog">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        <h4 class="modal-title">Detalhar Postagem</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <label for="">Titulo</label>
+                                        <input class="span2" id="appendedPrependedInput" size="16"  type="password" name="text"  placeholder="{{ i.title }}">
+                                        <label for="">Resumo</label>
+                                        <input class="span2" id="appendedPrependedInput" size="16"  type="password" name="text"  placeholder="{{ i.resume }}">
+                                        <label for="">Corpo</label>
+                                        <input class="span2" id="appendedPrependedInput" size="16"  type="password" name="text"  placeholder="{{ i.body }}">
+                                        <label for="">Tema</label>
+                                        <input class="span2" id="appendedPrependedInput" size="16"  type="password" name="text"  placeholder="{{ i.theme }}">
+                                        <label for="">Anexo</label>
+                                        <input class="span2" id="appendedPrependedInput" size="16"  type="password" name="file"  placeholder="{{ i.image }}">
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    {% endfor %}
+                </ul>
+            </div>
+
+            <div class="pagination">
+                <ul>
+                    {% if news.has_previous %}
+                        <li><a href="?page=1">&laquo; Inicio</a></li>
+                        <li><a href="?page={{ news.previous_page_number }}">Anterior</a></li>
+                    {% endif %}
+
+                    <li><a href="">Pagina {{ news.number }} de {{ news.paginator.num_pages }}.</a></li>
+
+                    {% if news.has_next %}
+                        <li><a href="?page={{ news.next_page_number }}">Proximo</a></li>
+                        <li><a href="?page={{ news.paginator.num_pages }}">Ultima &raquo;</a></li>
+                    {% endif %}
+                    {#                </ul>#}
+                </ul>
+            </div>
+        </div><!-- End gallery list-->
+    </div><!-- End container row -->
+
+
+
+
 {% endblock %}

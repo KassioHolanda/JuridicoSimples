@@ -20,3 +20,23 @@
 .blog-post-hover a {
     font-size: 16px;
 }
+
+.img_index_home {
+    height: 145px;
+    width: 200px;
+}
+
+.img_outras_postagens {
+    height: 50px;
+    width: 50px;
+    /*margin: 10px;*/
+}
+
+.img_postagem_principal {
+    width: 300px;
+    height: 350px;
+}
+
+.modal {
+    padding: 20px;
+}
