@@ -40,3 +40,48 @@
 .modal {
     padding: 20px;
 }
+
+input[type="text"] {
+    width: 400px;
+}
+
+input[type="password"] {
+    width: 400px;
+}
+
+select {
+    margin-top: 10px;
+    width: 375px;
+    background-color: #ffffff;
+    border: 1px solid #cccccc;
+}
+
+textarea {
+    width: 400px;
+}
+
+input[type="file"] {
+    height: 50px;
+    line-height: 20px;
+}
+
+input[class*="input_login"] {
+    width: 200px;
+}
+
+/*.gallery-post-grid li {*/
+    /*margin-bottom: 70px;*/
+/*}*/
+
+.project-details {
+    height: 40px;
+}
+
+.container_corpo {
+    width: 80%;
+    margin: auto;
+}
+
+input[class*="busca"] {
+    width: 210px;
+}

@@ -1,70 +1,61 @@
 {% extends 'base_admin.html' %}
 {% block body %}
+
     <h5 class="title-bg">Publicar Noticias</h5>
-    <div class="row">
-        <form method="POST" name="register" class="register-form" enctype="multipart/form-data">
-            {% csrf_token %}
-
-            <h5 for="">Titulo</h5>
-            {{ form_create_news.title }}
-            <h5 for="">Resumo</h5>
-            {{ form_create_news.resume }}
-            <h5 for="">Tema</h5>
-            {{ form_create_news.theme }}
-            <button type="button" class="btn" data-toggle="modal" data-target="#myModal">+</button>
-            {#            <a href=""><i class="icon-plus"></i></a>#}
-            <h5 for="">Corpo da Postagem</h5>
-            {{ form_create_news.body }}
-            <h5 for="">Definir Postagem como Principal?</h5>{{ form_create_news.postagem_principal }}<br>
-            <h5 for="">Imagem</h5>
-            {{ form_create_news.image }}
-
-            <br><br><br>
-            <button type="submit" id='submit'
-                    class="btn waves-effect waves-light green-black">Publicar
-            </button>
-        </form>
-    </div>
-
-
-    {#    <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>#}
-
-    <!-- Modal -->
-    <div id="myModal" class="modal fade" role="dialog">
-        <div class="modal-dialog">
-
-            <form method="POST">
-                <br>
-                <h5>Cadastrar Tema</h5>
-                {#                <br>#}
-                {#                {{ erros }}#}
-                {#                <br>#}
-                {#                {% csrf_token %}#}
-                {#                <input class="span2" id="prependedInput"#}
-                {#                       size="16" type="text" name="tema"#}
-                {#                       placeholder="Tema">#}
-                {#                {% csrf_token %}#}
-                {##}
-                {#                <input class="span2"#}
-                {#                       id="appendedPrependedInput" size="16"#}
-                {#                       type="text" name="descricao"#}
-                {#                       placeholder="Descrição do Tema">#}
-                {#                <br>#}
-
+    <div class="container_corpo">
+        <div class="row">
+            <form method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
-                {{ formulario_cadastrar_tema }}
-                <br>
+                {#            {{ form_create_news }}#}
+                <h5 for="">Titulo</h5>
+                {{ form_create_news.titulo }}
 
-                <button class="btn" type="submit">Cadastrar</button>
+                <h5 for="">Resumo</h5>
+                {{ form_create_news.resumo }}
+
+                <h5 for="">Tema</h5>
+                {{ form_create_news.tema }}
+
+                <button type="button" class="btn" data-toggle="modal" data-target="#myModal">+</button>
+                <h5 for="">Corpo da Postagem</h5>
+                {{ form_create_news.corpo }}
+
+                <h5 for="">Definir Postagem como Principal?</h5>
+                {{ form_create_news.postagem_principal }}<br>
+
+                <h5 for="">Imagem</h5>
+                {{ form_create_news.imagem }}
+
+                <br><br><br>
+                <button type="submit" class="btn">Publicar</button>
             </form>
         </div>
-        <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+
+
+        {#    <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>#}
+
+        <!-- Modal -->
+        <div id="myModal" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+
+                <form method="POST">
+                    <br>
+                    <h4 class="title-bg">Cadastrar Tema</h4>
+
+                    {% csrf_token %}
+                    <h5 for="">Nome</h5>
+                    {{ formulario_cadastrar_tema.nome }}
+                    <h5 for="">Descrição do Tema</h5>
+                    {{ formulario_cadastrar_tema.descricao }}
+                    <br>
+
+                    <button class="btn" type="submit">Cadastrar</button>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+            </div>
         </div>
     </div>
-
-    </div>
-    </div>
-
 
 {% endblock %}

@@ -2,7 +2,7 @@ from django import forms
 from django.contrib.auth import get_user_model
 from django.forms.widgets import ClearableFileInput
 
-from core.models import User, News, Theme
+from core.models import User, Postagem, Theme
 
 User = get_user_model()
 
@@ -38,13 +38,13 @@ class RegiterNewsForm(forms.ModelForm):
     #                        required=False)
     # Resumo = forms.CharField(max_length=200, widget=forms.TextInput(attrs={'class': 'materialize-textarea'}),
     #                        required=False)
-    image = forms.ImageField(widget=ClearableFileInput)
-    body = forms.CharField(label='Corpo da Noticia', max_length=255,
-                           widget=forms.Textarea(attrs={'class': 'materialize-textarea'}),
-                           required=False)
+    # image = forms.ImageField(widget=ClearableFileInput)
+    # body = forms.CharField(label='Corpo da Noticia', max_length=255,
+    #                        widget=forms.Textarea(attrs={'class': 'materialize-textarea'}),
+    #                        required=False)
 
     class Meta:
-        model = News
+        model = Postagem
         fields = '__all__'
         widgets = {
             'Titulo': forms.TextInput(attrs={

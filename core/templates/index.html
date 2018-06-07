@@ -5,16 +5,17 @@
         <div class="span8">
             <div class="flexslider">
                 <ul class="slides">
-                    <li><a href="{% url 'news_detail' postagem_principal.id %}"><img class="img_postagem_principal" src="/media/{{ postagem_principal.image }}" alt="slider"/></a>
+                    {% if postagem_principal.imagem %}
+                    <li><a href="{% url 'news_detail' postagem_principal.id %}"><img class="img_postagem_principal"
+                                                                                     src="/media/{{ postagem_principal.imagem }}"
+                                                                                     alt="slider"/></a>
                     </li>
-{#                    <li><a href="{% url 'contact' %}"><img src="{% static 'img/office.jpg' %}" alt="slider"/></a>#}
-{#                    </li>#}
-{#                    <li><a href="{% url 'contact' %}"><img src="{% static 'img/office.jpg' %}" alt="slider"/></a>#}
-{#                    </li>#}
-{#                    <li><a href="{% url 'contact' %}"><img src="{% static 'img/office.jpg' %}" alt="slider"/></a>#}
-{#                    </li>#}
-{#                    <li><a href="{% url 'contact' %}"><img src="{% static 'img/office.jpg' %}" alt="slider"/></a>#}
-{#                    </li>#}
+                    {% else %}
+                        <li><a href="{% url 'news_detail' postagem_principal.id %}"><img class="img_postagem_principal"
+                                                                                     src=""
+                                                                                     alt="slider"/></a>
+                    </li>
+                    {% endif %}
                 </ul>
             </div>
         </div>
@@ -22,12 +23,12 @@
         <div class="span4">
             <h3>Bem vindo ao advogando. <br/>
                 Um grande centro de Informações.</h3>
-            <p class="lead">{{ postagem_principal.title }}.</p>
-            <p>{{ postagem_principal.body }}.</p>
+            <p class="lead">{{ postagem_principal.titulo }}.</p>
+            <p>{{ postagem_principal.resumo }}.</p>
         </div>
-    </div><!-- End Headline -->
+    </div>
 
-    <div class="row gallery-row"><!-- Begin Gallery Row -->
+    <div class="row gallery-row">
 
         <div class="span12">
             {% if news_all %}
@@ -43,16 +44,16 @@
                         <li class="span3 gallery-item" data-id="id-1" data-type="illustration">
                         <span class="gallery-hover-4col hidden-phone hidden-tablet">
                             <span class="gallery-icons">
-                                <a href="/media/{{ new.image }}"
+                                <a href="/media/{{ new.imagem }}"
                                    class="item-zoom-link lightbox" title="Imagem Ampliada"
                                    data-rel="prettyPhoto"></a>
                                 <a href="{% url 'news_detail' new.id %}" class="item-details-link"></a>
                             </span>
                         </span>
-                            <a href="gallery-single.htm"><img class="img_news" src="/media/{{ new.image }}"
+                            <a href="gallery-single.htm"><img class="img_news" src="/media/{{ new.imagem }}"
                                                               alt="Gallery"></a>
                             <span class="project-details"><a
-                                    href="gallery-single.htm">{{ new.title }}</a>{{ new.resume }}.</span>
+                                    href="gallery-single.htm">{{ new.titulo }}</a>{{ new.resumo }}.</span>
                         </li>
                     {% endfor %}
                 </ul>

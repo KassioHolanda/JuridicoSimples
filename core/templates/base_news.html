@@ -81,9 +81,9 @@
 
                 <ul class="nav">
                     <li><a href="{% url 'index' %}">Pagina Inicial</a></li>
-                    <li><a href="{% url 'all_news' %}">Todas as Publicações</a></li>
+                    <li><a href="{% url 'todas_as_publicacoes' %}">Todas as Publicações</a></li>
                     <li><a href="#" data-toggle="modal" data-target="#myModal">Acessar</a></li>
-                    <li><a href="{% url 'contact' %}">Contatos</a></li>
+                    <li><a href="{% url 'contato' %}">Contatos</a></li>
                 </ul>
             </div>
 
@@ -103,7 +103,7 @@
                             <form action="/login_admin/" method="post">
                                 {% csrf_token %}
                                 <div class="input-prepend">
-                                    <span class="add-on"><i class="icon-user"></i></span><input class="span2"
+                                    <span class="add-on"><i class="icon-user"></i></span><input class="span2 input_login"
                                                                                                 id="prependedInput"
                                                                                                 size="16" type="text"
                                                                                                 name="user"
@@ -111,7 +111,7 @@
                                 </div>
                                 {% csrf_token %}
                                 <div class="input-prepend">
-                                    <span class="add-on"><i class="icon-lock"></i></span><input class="span2"
+                                    <span class="add-on"><i class="icon-lock"></i></span><input class="span2 input_login"
                                                                                                 id="appendedPrependedInput"
                                                                                                 size="16"
                                                                                                 type="password"

@@ -11,10 +11,10 @@
                         <a href="{% url 'news_detail' i.id %}">
                             <li class="span3 blog-post-item">
                                 <div class="blog-post-hover hidden-phone hidden-tablet">
-                                    <p><a href="{% url 'news_detail' i.id %}" class="clearfix">{{ i.title }}</a>
-                                        {{ i.date }}<br/>
+                                    <p><a href="{% url 'news_detail' i.id %}" class="clearfix">{{ i.titulo }}</a>
+                                        {{ i.data_postagem }}<br/>
                                 </div>
-                                <a href="news_detail.html"><img class="img_post_all" src="/media/{{ i.image }}"
+                                <a href="news_detail.html"><img class="img_post_all" src="/media/{{ i.imagem }}"
                                                                 alt="Post Thumb"></a>
                             </li>
                         </a>
@@ -46,20 +46,20 @@
         ================================================== -->
         <div class="span3 sidebar">
 
-{#            <section>#}
-{#                <div class="input-append">#}
-{#                    <form action="#">#}
-{#                        <input id="appendedInputButton" size="16" type="text" placeholder="Search">#}
-{#                        <button class="btn" type="button"><i class="icon-search"></i></button>#}
-{#                    </form>#}
-{#                </div>#}
-{#            </section>#}
+            <section>
+                <div class="input-append">
+                    <form action="#">
+                        <input class="busca" id="appendedInputButton" size="16" type="text" placeholder="Pesquisar">
+                        <button class="btn" type="button"><i class="icon-search"></i></button>
+                    </form>
+                </div>
+            </section>
 
             <h5 class="title-bg">Temas</h5>
 
             <ul class="post-category-list">
                 {% for i in themes %}
-                    <li><a href="#">{{ i.name }}</a></li>
+                    <li><a href="#">{{ i.nome }}</a></li>
                 {% endfor %}
             </ul>
 

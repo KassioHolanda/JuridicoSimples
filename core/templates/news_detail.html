@@ -5,22 +5,16 @@
     <div class="row">
         <div class="span8 blog">
             <article>
-                <h3 class="title-bg"><a href="#">{{ new_detail.title }}</a></h3>
-
+                <h3 class="title-bg"><a href="#">{{ new_detail.titulo }}</a></h3>
                 <div class="post-content">
                     <a href="#">
-                        <img class="img_news_detail" src="/media/{{ new_detail.image }}" alt="Post Thumb"></a>
+                        <img class="img_news_detail" src="/media/{{ new_detail.imagem }}" alt="Post Thumb"></a>
                     <div class="post-body">
-                        <p>{{ new_detail.body }}.</p>
+                        <p style="font-size: 15px">{{ new_detail.corpo }}.</p>
                     </div>
-                    {#                    <span class="gallery-icons">#}
-                    {#                                <a href="/media/{{ new_detail.image }}"#}
-                    {#                                   class="item-zoom-link lightbox" title="Imagem Ampliada"#}
-                    {#                                   data-rel="prettyPhoto"></a>#}
-                    {#                            </span>#}
                     <div class="post-summary-footer">
                         <ul class="post-data">
-                            <li><i class="icon-calendar"></i>{{ new_detail.date.date }}</li>
+                            <li><i class="icon-calendar"></i>{{ new_detail.data_postagem.date }}</li>
                             <li><i class="icon-user"></i> <a href="#">Admin</a></li>
                         </ul>
                     </div>
@@ -29,7 +23,6 @@
         </div>
 
 
-        <div class="modal">
             <div class="span4 sidebar">
                 <h5 class="title-bg">Outras Postagens</h5>
                 <ul class="popular-posts">
@@ -37,18 +30,15 @@
                         <a href="{% url 'news_detail' i.id %}">
                             <li>
                                 <a href="{% url 'news_detail' i.id %}"><img class="img_outras_postagens"
-                                                                            src="/media/{{ i.image }}"
-                                                                            style="width: 30%"
+                                                                            src="/media/{{ i.imagem }}" style="width: 30%"
                                                                             alt="Popular Post"></a>
-                                <h6><a href="{% url 'news_detail' i.id %}">{{ i.title }}</a></h6>
-                                <em>{{ i.date }}</em>
+                                <h6><a href="{% url 'news_detail' i.id %}">{{ i.titulo }}</a></h6>
+                                <em>{{ i.data_postagem.date }}</em>
                             </li>
                         </a>
                     {% endfor %}
                 </ul>
             </div>
-        </div>
-
     </div>
 
 {% endblock %}

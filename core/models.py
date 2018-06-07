@@ -16,33 +16,34 @@ def get_file_path(instance, filename):
     return os.path.join('media', filename)
 
 
-class News(models.Model):
-    date = models.DateTimeField('Data de Cadastro', auto_now_add=True)
-    title = models.CharField('Titulo', max_length=40, null=False)
-    resume = models.CharField('Resumo', max_length=40, null=True)
-    theme = models.ForeignKey('Theme', related_name='news_theme', max_length=255, null=True, on_delete=models.CASCADE)
-    body = models.TextField('Corpo da Noticia', null=False)
-    image = models.FileField(upload_to=get_file_path, null=True)
+class Postagem(models.Model):
+    data_postagem = models.DateTimeField('Data de Postagem', auto_now_add=True)
+    titulo = models.CharField('Titulo', max_length=40, null=False)
+    resumo = models.CharField('Resumo', max_length=40, null=True)
+    tema = models.ForeignKey('Theme', related_name='news_theme', max_length=255, null=True, on_delete=models.CASCADE)
+    corpo = models.TextField('Corpo da Noticia', null=False, max_length=60000)
+    imagem = models.FileField(upload_to=get_file_path, null=True)
     postagem_principal = models.BooleanField('Postagem Principal', default=False, null=False)
+
     # user_register = models.ForeignKey('User', null=False, on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.title
+        return self.titulo
 
     class Meta:
-        ordering = ('-date',)
+        ordering = ('-data_postagem',)
 
 
 class Theme(models.Model):
-    description = models.CharField(max_length=255, null=False)
-    name = models.CharField(max_length=255, null=False, unique=True)
+    descricao = models.CharField('Descrição Tema', max_length=255, null=False)
+    nome = models.CharField('Nome', max_length=255, null=False, unique=True)
 
     def __str__(self):
-        return self.name
+        return self.nome
 
     @property
-    def all_news(self):
-        return News.objects.filter(theme=self)
+    def todas_as_postagens(self):
+        return Postagem.objects.filter(theme=self)
 
 
 class User(AbstractBaseUser):

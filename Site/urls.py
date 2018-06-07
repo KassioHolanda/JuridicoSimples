@@ -24,7 +24,9 @@ from core.views import *
 
 urlpatterns = [
                   path('admin/', admin.site.urls),
+
                   path('', index, name='index'),
+                    path('todas_as_publicacoes/', todas_as_publicacoes, name='todas_as_publicacoes'),
                   path('news_detail/<int:id_news>', news_detail, name='news_detail'),
                   path('login_admin/', login, name='login'),
                   # path('cadastrar_tema_postagem/', cadastrar_tema_postagem, name='cadastrar_tema_postagem'),
@@ -32,8 +34,8 @@ urlpatterns = [
                   # path('configurar_postagem/<int:postagem_id>', configurar_postagem, name='configurar_postagem'),
                   path('register_user/', register_user, name='registrar'),
                   path('create_news/', create_news, name='create_news'),
-                  path('contact/', contact, name='contact'),
-                  path('all_news/', all_news, name='all_news'),
+                  path('contato/', contact, name='contato'),
+
                   path('logout/', logout_then_login, {"login_url": "index"}, name="logout_usuario"),
                   path('send_mail', send_mail, name='send_mail'),
                   # path('all_news/', search_by_theme, name='search_by_theme'),

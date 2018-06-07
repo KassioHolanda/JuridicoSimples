@@ -12,7 +12,7 @@ from django.conf import settings
 # from core.forms import RegistrarUsuarioForm
 from core.forms import RegisterUser, RegiterNewsForm, RegistrarTemaFormulario
 from django.contrib.auth import login as auth_login
-from core.models import News, Theme
+from core.models import Postagem, Theme
 
 User = get_user_model()
 
@@ -25,8 +25,8 @@ def index(request):
     context = {
         # 'news': News.objects.get(id=1),
         # 'news_2': News.objects.get(id=2),
-        'news_all': News.objects.all()[:4],
-        'postagem_principal' : News.objects.all().filter(postagem_principal=True).first()
+        'news_all': Postagem.objects.all()[1:5],
+        'postagem_principal': Postagem.objects.all().filter(postagem_principal=True).first()
     }
 
     return render(request, template_name, context)
@@ -50,7 +50,7 @@ def register_user(request):
 
 #
 # def search_by_theme(request, theme_id):
-#     template_name = 'all_news.html'
+#     template_name = 'todas_as_publicacoes.html'
 #     context = {
 #         'news_by_theme': News.objects.filter(theme_id=theme_id)
 #     }
@@ -76,7 +76,7 @@ def login(request):
 def news_detail(request, id_news):
     template_name = 'news_detail.html'
 
-    context = {'new_detail': News.objects.get(id=id_news), 'news': News.objects.all()[2:7]}
+    context = {'new_detail': Postagem.objects.get(id=id_news), 'news': Postagem.objects.all()[2:7]}
 
     return render(request, template_name, context)
 
@@ -86,7 +86,7 @@ def admin_home(request):
     template_name = 'admin_home.html'
     context = {
 
-        'news': News.objects.all()[:12]
+        'news': Postagem.objects.all()[:12]
     }
     return render(request, template_name, context)
 
@@ -155,7 +155,7 @@ def contact(request):
 def admin_home(request):
     template_name = 'admin_home.html'
 
-    news_list = News.objects.all()
+    news_list = Postagem.objects.all()
 
     paginator = Paginator(news_list, 12)
     page = request.GET.get('page')
@@ -169,10 +169,10 @@ def admin_home(request):
     return render(request, template_name, context)
 
 
-def all_news(request):
-    template_name = 'all_news.html'
+def todas_as_publicacoes(request):
+    template_name = 'todas_as_publicacoes.html'
 
-    news_list = News.objects.all()
+    news_list = Postagem.objects.all()
 
     paginator = Paginator(news_list, 9)
     page = request.GET.get('page')
